@@ -40,6 +40,18 @@ class StreamForm extends React.Component {
       >
         <div className="ui grid">
           <div className="six wide column">
+            <label htmlFor="dropDownSelect">
+              <strong>Select Category</strong>
+            </label>
+            <Field
+              name="category"
+              label="dropDownSelect"
+              component={DropDownSelect}
+              patterns={categories}
+              className="form-control"
+            ></Field>
+            <Field name="url" component={this.renderInput} label="Video URL" />
+
             <Field
               name="title"
               component={this.renderInput}
@@ -55,20 +67,6 @@ class StreamForm extends React.Component {
               component={this.renderInput}
               label="Category Description"
             /> */}
-            <br />
-
-            <label htmlFor="dropDownSelect">
-              <strong>Select Category</strong>
-            </label>
-            <Field
-              name="category"
-              label="dropDownSelect"
-              component={DropDownSelect}
-              patterns={categories}
-              className="form-control"
-            ></Field>
-            <br />
-            <Field name="url" component={this.renderInput} label="Video URL" />
           </div>
           <div className="six wide column">
             <Field

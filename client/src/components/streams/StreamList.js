@@ -8,7 +8,7 @@ import "./dropdown.css";
 class StreamList extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { selectedPattern: "ALL" };
+    this.state = { selectedPattern: "OUTSIDE TURNS" };
   }
   componentDidMount() {
     this.props.fetchStreams();

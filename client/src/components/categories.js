@@ -5,6 +5,5 @@ export const categories = [
   "ENCHUFLA",
   "INSIDE TURNS",
   "LEFT TURNS",
-  "HAMMER LOCK",
-  "CROSS BODY LEAD"
+  "HAMMER LOCK"
 ];

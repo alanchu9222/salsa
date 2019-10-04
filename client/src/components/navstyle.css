@@ -1,11 +1,25 @@
-.nav-button {
+/* .nav-button {
   width: 200px;
   height: 100px;
   line-height: 100px;
   padding-top: 40px;
-}
+} */
 
 .nav-bar {
   height: 100px;
   background-repeat: repeat-x;
+}
+.nav-button {
+  height: 100px;
+  width: 100%;
+}
+.nav-button:hover {
+  opacity: 0.8;
+}
+
+.navbar.grid {
+  margin: 0 !important;
+}
+.navbar.grid .column {
+  padding: 0 !important;
 }
