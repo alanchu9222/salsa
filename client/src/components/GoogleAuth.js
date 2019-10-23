@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { signIn, signOut } from "../actions";
-import "./navstyle.css";
+import "./navstyle2.css";
 class GoogleAuth extends React.Component {
   componentDidMount() {
     window.gapi.load("client:auth2", () => {
@@ -47,7 +47,7 @@ class GoogleAuth extends React.Component {
       return (
         <button
           onClick={this.onSignOutClick}
-          className="ui teal google button huge nav-button"
+          className="google huge nav-button"
         >
           <i className="google icon" />
           Sign Out
@@ -55,10 +55,7 @@ class GoogleAuth extends React.Component {
       );
     } else {
       return (
-        <button
-          onClick={this.onSignInClick}
-          className="ui teal google button huge nav-button"
-        >
+        <button onClick={this.onSignInClick} className="google huge nav-button">
           <i className="google icon" />
           Sign In
         </button>

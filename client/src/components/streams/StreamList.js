@@ -87,13 +87,18 @@ class StreamList extends React.Component {
   render() {
     return (
       <div>
-        <div className="dropdown">
-          <button className="dropbtn">Select a Dance Pattern</button>
-          <div className="dropdown-content">
-            {categories.map(this.mapDropdownItem)}
-            {/* <a href="#">Link 1</a>
+        <div className="stat-container">
+          <div className="dropdown">
+            <button className="dropbtn">Select a Dance Pattern</button>
+            <div className="dropdown-content">
+              {categories.map(this.mapDropdownItem)}
+              {/* <a href="#">Link 1</a>
             <a href="#">Link 2</a>
             <a href="#">Link 3</a> */}
+            </div>
+          </div>
+          <div className="current-status">
+            Let's do {this.state.selectedPattern}!
           </div>
         </div>
 

@@ -5,7 +5,7 @@ import StreamEdit from "./streams/StreamEdit";
 import StreamDelete from "./streams/StreamDelete";
 import StreamList from "./streams/StreamList";
 import StreamShow from "./streams/StreamShow";
-import Header from "./Header";
+import Header from "./Header2";
 import history from "../history";
 
 const App = () => {
