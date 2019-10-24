@@ -55,6 +55,34 @@
       "category": "OUTSIDE TURNS",
       "userId": "108679154753113632797",
       "id": 33
+    },
+    {
+      "category": "BLOCK TURNS",
+      "url": "https://github.com/alanchu9222/salsa_collection/raw/master/outside-turn/2019-09-01.mp4",
+      "description": "Variation 1",
+      "userId": "108679154753113632797",
+      "id": 34
+    },
+    {
+      "category": "BLOCK TURNS",
+      "url": "https://github.com/alanchu9222/salsa_collection/raw/master/outside-turn/2019-09-01.mp4",
+      "description": "Variation 2",
+      "userId": "108679154753113632797",
+      "id": 35
+    },
+    {
+      "category": "BLOCK TURNS",
+      "url": "https://github.com/alanchu9222/salsa_collection/raw/master/outside-turn/2019-09-01.mp4",
+      "description": "Variation 3",
+      "userId": "108679154753113632797",
+      "id": 37
+    },
+    {
+      "category": "BLOCK TURNS",
+      "url": "https://github.com/alanchu9222/salsa_collection/raw/master/outside-turn/2019-09-01.mp4",
+      "description": "Variation 4",
+      "userId": "108679154753113632797",
+      "id": 38
     }
   ]
 }

@@ -7,13 +7,29 @@ import {
   FETCH_STREAMS,
   FETCH_STREAM,
   DELETE_STREAM,
-  EDIT_STREAM
+  EDIT_STREAM,
+  SELECT_CATEGORY,
+  SET_VIDEOMODE
 } from "./types";
+
+export const setVideoMode = mode => {
+  return {
+    type: SET_VIDEOMODE,
+    payload: mode
+  };
+};
 
 export const signIn = userId => {
   return {
     type: SIGN_IN,
     payload: userId
+  };
+};
+
+export const selectCategory = category => {
+  return {
+    type: SELECT_CATEGORY,
+    payload: category
   };
 };
 

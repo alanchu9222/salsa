@@ -3,13 +3,11 @@
  * DropDownSelect
  *
  */
-
 import React from "react";
 import PropTypes from "prop-types";
 
 class DropDownSelect extends React.Component {
   // eslint-disable-line react/prefer-stateless-function
-
   renderSelectOptions = pattern => (
     <option key={pattern} value={pattern}>
       {pattern}

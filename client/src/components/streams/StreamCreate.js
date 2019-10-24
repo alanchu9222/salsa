@@ -11,13 +11,22 @@ class StreamCreate extends React.Component {
     return (
       <div>
         <h3>Add a Dance Pattern</h3>
-        <StreamForm onSubmit={this.onSubmit} />
+        <StreamForm
+          categorySelected={this.props.categorySelected}
+          initialValues={{ category: this.props.categorySelected }}
+          onSubmit={this.onSubmit}
+        />
       </div>
     );
   }
 }
+const mapStateToProps = state => {
+  return {
+    categorySelected: state.salsa.categorySelected
+  };
+};
 
 export default connect(
-  null,
+  mapStateToProps,
   { createStream }
 )(StreamCreate);

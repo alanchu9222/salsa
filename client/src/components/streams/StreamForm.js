@@ -1,11 +1,8 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
-import { categories } from "../categories";
-import DropDownSelect from "./DropDownSelect";
+// import { categories } from "../categories";
+// import DropDownSelect from "./DropDownSelect";
 class StreamForm extends React.Component {
-  componentDidMount() {
-    console.log(categories);
-  }
   renderError({ error, touched }) {
     if (touched && error) {
       return (
@@ -28,7 +25,7 @@ class StreamForm extends React.Component {
   };
 
   onSubmit = formValues => {
-    console.log(formValues);
+    // console.log(formValues);
     this.props.onSubmit(formValues);
   };
 
@@ -40,33 +37,36 @@ class StreamForm extends React.Component {
       >
         <div className="ui grid">
           <div className="six wide column">
-            <label htmlFor="dropDownSelect">
+            {/* <label htmlFor="dropDownSelect">
               <strong>Select Category</strong>
-            </label>
+            </label> */}
             <Field
+              name="category"
+              component={this.renderInput}
+              type="text"
+              label="Category Selected"
+            />
+
+            {/* <Field
               name="category"
               label="dropDownSelect"
               component={DropDownSelect}
               patterns={categories}
               className="form-control"
-            ></Field>
-            <Field name="url" component={this.renderInput} label="Video URL" />
+            ></Field> */}
 
+            <Field name="url" component={this.renderInput} label="Video URL" />
+            {/* 
             <Field
               name="title"
               component={this.renderInput}
               label="Enter Title"
-            />
+            /> */}
             <Field
               name="description"
               component={this.renderInput}
               label="Enter Description"
             />
-            {/* <Field
-              name="category"
-              component={this.renderInput}
-              label="Category Description"
-            /> */}
           </div>
           <div className="six wide column">
             <Field
@@ -79,6 +79,7 @@ class StreamForm extends React.Component {
               component={this.renderInput}
               label="Bookmark2 Description"
             />
+
             <Field
               name="bookmark3"
               component={this.renderInput}
@@ -124,8 +125,8 @@ class StreamForm extends React.Component {
 const validate = formValues => {
   const errors = {};
 
-  if (!formValues.title) {
-    errors.title = "You must enter a title";
+  if (!formValues.url) {
+    errors.title = "You must enter a url";
   }
 
   if (!formValues.description) {
@@ -137,5 +138,6 @@ const validate = formValues => {
 
 export default reduxForm({
   form: "streamForm",
-  validate
+  validate,
+  enableReinitialize: true
 })(StreamForm);

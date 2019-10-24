@@ -17,14 +17,13 @@ class StreamEdit extends React.Component {
     if (!this.props.stream) {
       return <div>Loading...</div>;
     }
-
     return (
       <div>
         <h3>Edit a Dance Pattern</h3>
         <StreamForm
+          categorySelected={this.props.categorySelected}
           initialValues={_.pick(
             this.props.stream,
-            "title",
             "description",
             "category",
             "time1",
@@ -45,7 +44,10 @@ class StreamEdit extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  return { stream: state.streams[ownProps.match.params.id] };
+  return {
+    stream: state.streams[ownProps.match.params.id],
+    categorySelected: state.salsa.categorySelected
+  };
 };
 
 export default connect(

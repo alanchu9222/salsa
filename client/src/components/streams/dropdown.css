@@ -13,6 +13,7 @@
   display: inline-block;
 }
 .dropdown-content {
+  width: 200px;
   display: none;
   position: absolute;
   background-color: #f9f9f9;
@@ -22,13 +23,15 @@
 }
 
 .dropdown-content div {
-  color: black;
+  text-align: center;
+  color: #18ada6;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
 }
 
 .dropdown-content div:hover {
+  text-align: center;
   background-color: #18ada6;
   color: #f9f9f9;
 }
@@ -51,21 +54,31 @@
   padding: 0.8rem;
   color: white;
 }
-
+.disable-select {
+  user-select: none; /* supported by Chrome and Opera */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+}
 @media only screen and (max-width: 700px) {
   .stat-container {
     display: grid;
-    grid-template-columns: minmax(360px, 1fr);
+    grid-template-columns: minmax(280px, 1fr);
   }
   .dropbtn {
     text-align: center;
     width: 100%;
+    grid-row: 2;
   }
+
   .current-status {
     text-align: center;
     background-image: none;
     font-size: 2rem;
     padding: 0.8rem;
+    line-height: 2rem;
     color: green;
+    grid-row: 1;
   }
 }

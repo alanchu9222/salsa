@@ -1,10 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchStream } from "../../actions";
+import { fetchStream, setVideoMode } from "../../actions";
 import "./formstyle.css";
 const vidStyle = {
   height: "70vh",
-  width: "90%",
+  width: "100%",
   border: "thick double #32a1ce",
   backgroundColor: "grey"
 };
@@ -22,6 +22,9 @@ class StreamShow extends React.Component {
       this.videoRef.current &&
         this.setState({ playtime: this.videoRef.current.currentTime });
     }, 100);
+  }
+  componentDidUpdate() {
+    console.log("entering video mode!");
   }
 
   setupVideo2 = () => {
@@ -56,17 +59,14 @@ class StreamShow extends React.Component {
     // Data-time store the parameter for the onCLick Call
     // The value is retrieved using event.currentTarget.dataset.time
     return (
-      <div className="ui grid">
-        <div className="four wide column">
-          <button
-            style={{ width: "100%" }}
-            data-time={time}
-            onClick={this.handleTimeClick}
-          >
+      // <div className="ui grid">
+      <div className="ui video-controls">
+        <div className="six wide column">
+          <button data-time={time} onClick={this.handleTimeClick}>
             {label}
           </button>
         </div>
-        <div className="twelve wide column">{description}</div>
+        <div className="ten wide column">{description}</div>
       </div>
     );
   };
@@ -105,8 +105,10 @@ class StreamShow extends React.Component {
     } = this.props.stream;
 
     return (
-      <div className="ui grid">
-        <div className="eight wide column">
+      // <div className="ui grid">
+      <div className="video-container disable-select">
+        {/* <div className="eight wide column"> */}
+        <div className="video-box1">
           <video
             style={vidStyle}
             ref={this.videoRef}
@@ -118,7 +120,7 @@ class StreamShow extends React.Component {
           >
             <source src={url} type="video/mp4" />
           </video>
-          <div className="ui grid speed-select">
+          <div className="speed-select">
             <div className="two wide column">Speed</div>
             <div className="three wide column">
               {this.speedSelectorButton(0.5)}
@@ -134,14 +136,14 @@ class StreamShow extends React.Component {
             </div>
           </div>
         </div>
-        <div className="eight wide column">
+        <div className="video-box2">
           <h1>{title}</h1>
           <h5>{description}</h5>
-          <div className="ui grid">
-            <div className="four wide column">
+          <div className="ui video-controls">
+            <div>
               <h5>Playtime</h5>
             </div>
-            <div className="twelve wide column">
+            <div>
               <h5>
                 {this.state &&
                   parseFloat(
@@ -166,5 +168,5 @@ const mapStateToProps = (state, ownProps) => {
 };
 export default connect(
   mapStateToProps,
-  { fetchStream }
+  { fetchStream, setVideoMode }
 )(StreamShow);

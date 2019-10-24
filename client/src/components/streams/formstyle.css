@@ -1,6 +1,54 @@
-.speed-select.grid {
+/* .speed-select.grid {
   margin: 0 !important;
 }
 .speed-select.grid .column {
   padding: 0 !important;
+} */
+
+.ui.list > .item .description:hover {
+  color: teal;
+  font-size: 1.3rem;
+}
+
+.disable-select {
+  user-select: none; /* supported by Chrome and Opera */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+}
+
+.video-container {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+}
+.speed-select {
+  display: grid;
+  grid-template-columns: 2fr repeat(4, 3fr);
+}
+.video-box2 {
+  padding: 30px;
+}
+.video-controls {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  padding: 0.5rem;
+  margin-left: 3rem;
+}
+@media only screen and (max-width: 700px) {
+  .video-container {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .video-box1 {
+    grid-template-rows: 1;
+  }
+
+  .video-box2 {
+    grid-template-rows: 2;
+  }
+  .video-controls {
+    margin-left: 0rem;
+    grid-template-columns: 1fr 3fr;
+  }
 }

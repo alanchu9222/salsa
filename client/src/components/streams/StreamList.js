@@ -1,15 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { fetchStreams } from "../../actions";
+import { fetchStreams, selectCategory } from "../../actions";
 import { categories } from "../categories";
-
+import "./formstyle.css";
 import "./dropdown.css";
 class StreamList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { selectedPattern: "OUTSIDE TURNS" };
-  }
   componentDidMount() {
     this.props.fetchStreams();
   }
@@ -34,25 +30,24 @@ class StreamList extends React.Component {
 
   renderList() {
     let shortList = this.props.streams;
-    if (this.state.selectedPattern !== "ALL") {
+    if (this.props.categorySelected !== "ALL") {
       shortList = this.props.streams.filter(pattern => {
-        return pattern["category"] === this.state.selectedPattern;
+        return pattern["category"] === this.props.categorySelected;
       });
     }
-    // const shortList = this.props.streams.filter(pattern => {
-    //   return pattern["category"] === "OUTSIDE TURNS";
-    // });
-    //    console.log(shortList);
+
     return shortList.map(stream => {
       return (
         <div className="item" key={stream.id}>
           {this.renderAdmin(stream)}
-          <i className="large middle aligned icon video" />
+          <i className="large middle aligned icon video disable-select" />
           <div className="content">
             <Link to={`/streams/${stream.id}`} className="header">
-              {stream.title}
+              {/* {stream.title} */}
+              <div className="description disable-select">
+                {stream.description}
+              </div>
             </Link>
-            <div className="description">{stream.description}</div>
           </div>
         </div>
       );
@@ -70,8 +65,10 @@ class StreamList extends React.Component {
       );
     }
   }
+  // When dance style is selected, record it in the store
   handleDancePattern = e => {
-    this.setState({ selectedPattern: e.currentTarget.dataset.pattern });
+    this.props.selectCategory(e.currentTarget.dataset.pattern);
+    //    this.setState({ selectedPattern: e.currentTarget.dataset.pattern });
   };
   mapDropdownItem = selectedPattern => {
     return (
@@ -88,18 +85,19 @@ class StreamList extends React.Component {
     return (
       <div>
         <div className="stat-container">
-          <div className="dropdown">
-            <button className="dropbtn">Select a Dance Pattern</button>
-            <div className="dropdown-content">
+          <div className="dropdown disable-select">
+            <button className="dropbtn disable-select">
+              Select a Dance Pattern
+            </button>
+            <div className="dropdown-content disable-select">
               {categories.map(this.mapDropdownItem)}
-              {/* <a href="#">Link 1</a>
-            <a href="#">Link 2</a>
-            <a href="#">Link 3</a> */}
             </div>
           </div>
-          <div className="current-status">
-            Let's do {this.state.selectedPattern}!
-          </div>
+          {this.props.categorySelected.length > 0 && (
+            <div className="current-status disable-select">
+              Let's do {this.props.categorySelected}!
+            </div>
+          )}
         </div>
 
         <div className="ui celled list">{this.renderList()}</div>
@@ -113,10 +111,11 @@ const mapStateToProps = state => {
   return {
     streams: Object.values(state.streams),
     currentUserId: state.auth.userId,
-    isSignedIn: state.auth.isSignedIn
+    isSignedIn: state.auth.isSignedIn,
+    categorySelected: state.salsa.categorySelected
   };
 };
 export default connect(
   mapStateToProps,
-  { fetchStreams }
+  { fetchStreams, selectCategory }
 )(StreamList);

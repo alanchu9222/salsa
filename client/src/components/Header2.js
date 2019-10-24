@@ -19,7 +19,7 @@ const Header = () => {
 
       <div className="menu-item">
         <Link to="/">
-          <i class="fas fa-home fa-4x"></i>
+          <i className="fas fa-home fa-4x"></i>
         </Link>
       </div>
 
