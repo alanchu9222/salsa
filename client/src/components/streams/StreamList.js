@@ -68,7 +68,6 @@ class StreamList extends React.Component {
   // When dance style is selected, record it in the store
   handleDancePattern = e => {
     this.props.selectCategory(e.currentTarget.dataset.pattern);
-    //    this.setState({ selectedPattern: e.currentTarget.dataset.pattern });
   };
   mapDropdownItem = selectedPattern => {
     return (

@@ -1,7 +1,5 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
-// import { categories } from "../categories";
-// import DropDownSelect from "./DropDownSelect";
 class StreamForm extends React.Component {
   renderError({ error, touched }) {
     if (touched && error) {
@@ -37,9 +35,6 @@ class StreamForm extends React.Component {
       >
         <div className="ui grid">
           <div className="six wide column">
-            {/* <label htmlFor="dropDownSelect">
-              <strong>Select Category</strong>
-            </label> */}
             <Field
               name="category"
               component={this.renderInput}
@@ -47,21 +42,8 @@ class StreamForm extends React.Component {
               label="Category Selected"
             />
 
-            {/* <Field
-              name="category"
-              label="dropDownSelect"
-              component={DropDownSelect}
-              patterns={categories}
-              className="form-control"
-            ></Field> */}
-
             <Field name="url" component={this.renderInput} label="Video URL" />
-            {/* 
-            <Field
-              name="title"
-              component={this.renderInput}
-              label="Enter Title"
-            /> */}
+
             <Field
               name="description"
               component={this.renderInput}
@@ -124,9 +106,12 @@ class StreamForm extends React.Component {
 
 const validate = formValues => {
   const errors = {};
+  if (!formValues.category) {
+    errors.category = "You must enter a category";
+  }
 
   if (!formValues.url) {
-    errors.title = "You must enter a url";
+    errors.url = "You must enter a url";
   }
 
   if (!formValues.description) {
