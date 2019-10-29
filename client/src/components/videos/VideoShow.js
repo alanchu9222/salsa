@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchStream, setVideoMode } from "../../actions";
+import { fetchVideo, setVideoMode } from "../../actions";
 import "./formstyle.css";
 const vidStyle = {
   height: "70vh",
@@ -9,14 +9,14 @@ const vidStyle = {
   backgroundColor: "grey"
 };
 
-class StreamShow extends React.Component {
+class VideoShow extends React.Component {
   constructor(props) {
     super(props);
     this.videoRef = React.createRef();
   }
   componentDidMount() {
     const { id } = this.props.match.params;
-    this.props.fetchStream(id);
+    this.props.fetchVideo(id);
     this.setState({ playtime: 0 });
     setInterval(() => {
       this.videoRef.current &&
@@ -86,7 +86,7 @@ class StreamShow extends React.Component {
   };
 
   render() {
-    if (!this.props.stream) {
+    if (!this.props.video) {
       return <div>Loading...</div>;
     }
 
@@ -102,7 +102,7 @@ class StreamShow extends React.Component {
       bookmark4,
       time4,
       url
-    } = this.props.stream;
+    } = this.props.video;
 
     return (
       // <div className="ui grid">
@@ -163,9 +163,9 @@ class StreamShow extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  return { stream: state.videos[ownProps.match.params.id] };
+  return { video: state.videos[ownProps.match.params.id] };
 };
 export default connect(
   mapStateToProps,
-  { fetchStream, setVideoMode }
-)(StreamShow);
+  { fetchVideo, setVideoMode }
+)(VideoShow);

@@ -4,11 +4,11 @@ import history from "../history";
 import {
   SIGN_IN,
   SIGN_OUT,
-  CREATE_STREAM,
-  FETCH_STREAMS,
-  FETCH_STREAM,
-  DELETE_STREAM,
-  EDIT_STREAM,
+  CREATE_VIDEO,
+  FETCH_VIDEOS,
+  FETCH_VIDEO,
+  DELETE_VIDEO,
+  EDIT_VIDEO,
   SELECT_CATEGORY,
   SET_VIDEOMODE
 } from "./types";
@@ -40,43 +40,43 @@ export const signOut = () => {
   };
 };
 
-export const createStream = formValues => async (dispatch, getState) => {
+export const createVideo = formValues => async (dispatch, getState) => {
   const { userId } = getState().auth;
   //  const response = await videos.post("/videos", { ...formValues, userId });
   const response = await salsa.post("", { ...formValues, userId });
-  dispatch({ type: CREATE_STREAM, payload: response.data });
+  dispatch({ type: CREATE_VIDEO, payload: response.data });
   history.push("/");
 };
 
-export const fetchStreams = () => async dispatch => {
+export const fetchVideos = () => async dispatch => {
   //  const response = await videos.get("/videos");
   const response = await salsa.get("");
-  dispatch({ type: FETCH_STREAMS, payload: response.data });
+  dispatch({ type: FETCH_VIDEOS, payload: response.data });
 };
 
-export const fetchStream = id => async dispatch => {
+export const fetchVideo = id => async dispatch => {
   //  const response = await videos.get(`/videos/${id}`);
   const response = await salsa.get(`/${id}`);
-  dispatch({ type: FETCH_STREAM, payload: response.data });
+  dispatch({ type: FETCH_VIDEO, payload: response.data });
 };
 
-export const editStream = (id, formValues) => async dispatch => {
+export const editVideo = (id, formValues) => async dispatch => {
   //  const response = await videos.patch(`/videos/${id}`, formValues);
   const response = await salsa.put(
     `https://webhooks.mongodb-stitch.com/api/client/v2.0/app/app1-mukhm/service/http/incoming_webhook/salsa-put?id=${id}`,
     formValues
   );
 
-  dispatch({ type: EDIT_STREAM, payload: response.data });
+  dispatch({ type: EDIT_VIDEO, payload: response.data });
   history.push("/");
 };
 
-export const deleteStream = id => async dispatch => {
+export const deleteVideo = id => async dispatch => {
   //  await videos.delete(`/videos/${id}`);
   //await salsa.delete(`?/id=${id}`);
   await salsa.delete(
     `https://webhooks.mongodb-stitch.com/api/client/v2.0/app/app1-mukhm/service/http/incoming_webhook/salsa-delete?id=${id}`
   );
-  dispatch({ type: DELETE_STREAM, payload: id });
+  dispatch({ type: DELETE_VIDEO, payload: id });
   history.push("/");
 };

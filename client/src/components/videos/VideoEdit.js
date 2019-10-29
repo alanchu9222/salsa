@@ -1,32 +1,32 @@
 import _ from "lodash";
 import React from "react";
 import { connect } from "react-redux";
-import { fetchStream, editStream } from "../../actions";
-import StreamForm from "./StreamForm";
+import { fetchVideo, editVideo } from "../../actions";
+import VideoForm from "./VideoForm";
 
-class StreamEdit extends React.Component {
+class VideoEdit extends React.Component {
   componentDidMount() {
-    this.props.fetchStream(this.props.match.params.id);
+    this.props.fetchVideo(this.props.match.params.id);
   }
 
   onSubmit = formValues => {
-    console.log(this.props.stream.userId);
+    console.log(this.props.video.userId);
     const dataUpload = formValues;
-    dataUpload.userId = this.props.stream.userId;
-    this.props.editStream(this.props.match.params.id, dataUpload);
+    dataUpload.userId = this.props.video.userId;
+    this.props.editVideo(this.props.match.params.id, dataUpload);
   };
 
   render() {
-    if (!this.props.stream) {
+    if (!this.props.video) {
       return <div>Loading...</div>;
     }
     return (
       <div>
         <h3>Edit a Dance Pattern</h3>
-        <StreamForm
+        <VideoForm
           categorySelected={this.props.categorySelected}
           initialValues={_.pick(
-            this.props.stream,
+            this.props.video,
             "description",
             "category",
             "time1",
@@ -48,12 +48,12 @@ class StreamEdit extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    stream: state.videos[ownProps.match.params.id],
+    video: state.videos[ownProps.match.params.id],
     categorySelected: state.salsa.categorySelected
   };
 };
 
 export default connect(
   mapStateToProps,
-  { fetchStream, editStream }
-)(StreamEdit);
+  { fetchVideo, editVideo }
+)(VideoEdit);

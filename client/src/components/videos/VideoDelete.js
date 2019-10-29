@@ -3,11 +3,11 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Modal from "../Modal";
 import history from "../../history";
-import { fetchStream, deleteStream } from "../../actions";
+import { fetchVideo, deleteVideo } from "../../actions";
 
-class StreamDelete extends React.Component {
+class VideoDelete extends React.Component {
   componentDidMount() {
-    this.props.fetchStream(this.props.match.params.id);
+    this.props.fetchVideo(this.props.match.params.id);
   }
 
   renderActions() {
@@ -16,7 +16,7 @@ class StreamDelete extends React.Component {
     return (
       <React.Fragment>
         <button
-          onClick={() => this.props.deleteStream(id)}
+          onClick={() => this.props.deleteVideo(id)}
           className="ui button negative"
         >
           Delete
@@ -29,11 +29,11 @@ class StreamDelete extends React.Component {
   }
 
   renderContent() {
-    if (!this.props.stream) {
+    if (!this.props.video) {
       return "Are you sure you want to delete this dance pattern?";
     }
 
-    return `Are you sure you want to delete the dance pattern with description: ${this.props.stream.description}`;
+    return `Are you sure you want to delete the dance pattern with description: ${this.props.video.description}`;
   }
 
   render() {
@@ -49,10 +49,10 @@ class StreamDelete extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  return { stream: state.videos[ownProps.match.params.id] };
+  return { video: state.videos[ownProps.match.params.id] };
 };
 
 export default connect(
   mapStateToProps,
-  { fetchStream, deleteStream }
-)(StreamDelete);
+  { fetchVideo, deleteVideo }
+)(VideoDelete);

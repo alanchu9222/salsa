@@ -1,9 +1,9 @@
 export const SIGN_IN = "SIGN_IN";
 export const SIGN_OUT = "SIGN_OUT";
-export const CREATE_STREAM = "CREATE_STREAM";
-export const FETCH_STREAMS = "FETCH_STREAMS";
-export const FETCH_STREAM = "FETCH_STREAM";
-export const DELETE_STREAM = "DELETE_STREAM";
-export const EDIT_STREAM = "EDIT_STREAM";
+export const CREATE_VIDEO = "CREATE_VIDEO";
+export const FETCH_VIDEOS = "FETCH_VIDEOS";
+export const FETCH_VIDEO = "FETCH_VIDEO";
+export const DELETE_VIDEO = "DELETE_VIDEO";
+export const EDIT_VIDEO = "EDIT_VIDEO";
 export const SELECT_CATEGORY = "SELECT_CATEGORY";
 export const SET_VIDEOMODE = "SET_VIDEOMODE";

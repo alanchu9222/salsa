@@ -1,24 +1,24 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { fetchStreams, selectCategory } from "../../actions";
+import { fetchVideos, selectCategory } from "../../actions";
 import { categories } from "../categories";
 import "./formstyle.css";
 import "./dropdown.css";
-class StreamList extends React.Component {
+class VideoList extends React.Component {
   componentDidMount() {
-    this.props.fetchStreams();
+    this.props.fetchVideos();
   }
 
-  renderAdmin(stream) {
-    if (stream.userId === this.props.currentUserId) {
+  renderAdmin(video) {
+    if (video.userId === this.props.currentUserId) {
       return (
         <div className="right floated content">
-          <Link to={`/videos/edit/${stream.id}`} className="ui button primary">
+          <Link to={`/videos/edit/${video.id}`} className="ui button primary">
             Edit
           </Link>
           <Link
-            to={`/videos/delete/${stream.id}`}
+            to={`/videos/delete/${video.id}`}
             className="ui button negative"
           >
             Delete
@@ -36,16 +36,16 @@ class StreamList extends React.Component {
       });
     }
 
-    return shortList.map(stream => {
+    return shortList.map(video => {
       return (
-        <div className="item" key={stream.id}>
-          {this.renderAdmin(stream)}
+        <div className="item" key={video.id}>
+          {this.renderAdmin(video)}
           <i className="large middle aligned icon video disable-select" />
           <div className="content">
-            <Link to={`/videos/${stream.id}`} className="header">
-              {/* {stream.title} */}
+            <Link to={`/videos/${video.id}`} className="header">
+              {/* {video.title} */}
               <div className="description disable-select">
-                {stream.description}
+                {video.description}
               </div>
             </Link>
           </div>
@@ -116,5 +116,5 @@ const mapStateToProps = state => {
 };
 export default connect(
   mapStateToProps,
-  { fetchStreams, selectCategory }
-)(StreamList);
+  { fetchVideos, selectCategory }
+)(VideoList);

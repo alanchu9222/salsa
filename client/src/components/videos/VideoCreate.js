@@ -1,17 +1,17 @@
 import React from "react";
 import { connect } from "react-redux";
-import { createStream } from "../../actions";
-import StreamForm from "./StreamForm";
-class StreamCreate extends React.Component {
+import { createVideo } from "../../actions";
+import VideoForm from "./VideoForm";
+class VideoCreate extends React.Component {
   onSubmit = formValues => {
-    this.props.createStream(formValues);
+    this.props.createVideo(formValues);
   };
 
   render() {
     return (
       <div>
         <h3>Add a Dance Pattern</h3>
-        <StreamForm
+        <VideoForm
           categorySelected={this.props.categorySelected}
           initialValues={{ category: this.props.categorySelected }}
           onSubmit={this.onSubmit}
@@ -28,5 +28,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { createStream }
-)(StreamCreate);
+  { createVideo }
+)(VideoCreate);
