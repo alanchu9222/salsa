@@ -24,7 +24,8 @@ class StreamShow extends React.Component {
     }, 100);
   }
   componentDidUpdate() {
-    console.log("entering video mode!");
+    // console.log("entering video mode!");
+    // Note: Video component forces this component to be updated continuously
   }
 
   setupVideo2 = () => {
@@ -51,10 +52,9 @@ class StreamShow extends React.Component {
 
     const seconds = time % 60;
     const minutes = time / 60;
+
     const label =
-      (minutes ? "00" : minutes) +
-      ":" +
-      (seconds < 10 ? "0" + seconds : seconds);
+      Math.floor(minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds);
 
     // Data-time store the parameter for the onCLick Call
     // The value is retrieved using event.currentTarget.dataset.time
@@ -91,7 +91,7 @@ class StreamShow extends React.Component {
     }
 
     const {
-      title,
+      category,
       description,
       bookmark1,
       time1,
@@ -107,7 +107,6 @@ class StreamShow extends React.Component {
     return (
       // <div className="ui grid">
       <div className="video-container disable-select">
-        {/* <div className="eight wide column"> */}
         <div className="video-box1">
           <video
             style={vidStyle}
@@ -137,7 +136,7 @@ class StreamShow extends React.Component {
           </div>
         </div>
         <div className="video-box2">
-          <h1>{title}</h1>
+          <h1>{category}</h1>
           <h5>{description}</h5>
           <div className="ui video-controls">
             <div>

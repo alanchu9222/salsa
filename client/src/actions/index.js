@@ -1,5 +1,5 @@
 // import streams from "../apis/streams";
-import { salsa, salsaPut } from "../apis/streams";
+import { salsa } from "../apis/streams";
 import history from "../history";
 import {
   SIGN_IN,
@@ -62,7 +62,6 @@ export const fetchStream = id => async dispatch => {
 
 export const editStream = (id, formValues) => async dispatch => {
   //  const response = await streams.patch(`/streams/${id}`, formValues);
-  //  const response = await salsaPut.put(`?id=${id}`, formValues);
   const response = await salsa.put(
     `https://webhooks.mongodb-stitch.com/api/client/v2.0/app/app1-mukhm/service/http/incoming_webhook/salsa-put?id=${id}`,
     formValues
@@ -75,7 +74,7 @@ export const editStream = (id, formValues) => async dispatch => {
 export const deleteStream = id => async dispatch => {
   //  await streams.delete(`/streams/${id}`);
   //await salsa.delete(`?/id=${id}`);
-  const response = await salsa.delete(
+  await salsa.delete(
     `https://webhooks.mongodb-stitch.com/api/client/v2.0/app/app1-mukhm/service/http/incoming_webhook/salsa-delete?id=${id}`
   );
   dispatch({ type: DELETE_STREAM, payload: id });

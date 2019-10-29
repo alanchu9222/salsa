@@ -33,7 +33,7 @@ class StreamDelete extends React.Component {
       return "Are you sure you want to delete this dance pattern?";
     }
 
-    return `Are you sure you want to delete the dance pattern with title: ${this.props.stream.title}`;
+    return `Are you sure you want to delete the dance pattern with description: ${this.props.stream.description}`;
   }
 
   render() {
