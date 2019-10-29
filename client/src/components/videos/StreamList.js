@@ -14,11 +14,11 @@ class StreamList extends React.Component {
     if (stream.userId === this.props.currentUserId) {
       return (
         <div className="right floated content">
-          <Link to={`/streams/edit/${stream.id}`} className="ui button primary">
+          <Link to={`/videos/edit/${stream.id}`} className="ui button primary">
             Edit
           </Link>
           <Link
-            to={`/streams/delete/${stream.id}`}
+            to={`/videos/delete/${stream.id}`}
             className="ui button negative"
           >
             Delete
@@ -29,9 +29,9 @@ class StreamList extends React.Component {
   }
 
   renderList() {
-    let shortList = this.props.streams;
+    let shortList = this.props.videos;
     if (this.props.categorySelected !== "ALL") {
-      shortList = this.props.streams.filter(pattern => {
+      shortList = this.props.videos.filter(pattern => {
         return pattern["category"] === this.props.categorySelected;
       });
     }
@@ -42,7 +42,7 @@ class StreamList extends React.Component {
           {this.renderAdmin(stream)}
           <i className="large middle aligned icon video disable-select" />
           <div className="content">
-            <Link to={`/streams/${stream.id}`} className="header">
+            <Link to={`/videos/${stream.id}`} className="header">
               {/* {stream.title} */}
               <div className="description disable-select">
                 {stream.description}
@@ -58,7 +58,7 @@ class StreamList extends React.Component {
     if (this.props.isSignedIn) {
       return (
         <div style={{ textAlign: "right" }}>
-          <Link to="/streams/new" className="ui button primary">
+          <Link to="/videos/new" className="ui button primary">
             Create Dance Pattern
           </Link>
         </div>
@@ -108,7 +108,7 @@ class StreamList extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    streams: Object.values(state.streams),
+    videos: Object.values(state.videos),
     currentUserId: state.auth.userId,
     isSignedIn: state.auth.isSignedIn,
     categorySelected: state.salsa.categorySelected

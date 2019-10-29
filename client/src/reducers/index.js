@@ -7,6 +7,6 @@ import salsaReducer from "./salsaReducer";
 export default combineReducers({
   auth: authReducer,
   form: formReducer,
-  streams: streamReducer,
+  videos: streamReducer,
   salsa: salsaReducer
 });

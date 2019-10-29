@@ -1,5 +1,5 @@
-// import streams from "../apis/streams";
-import { salsa } from "../apis/streams";
+// import videos from "../apis/videos";
+import { salsa } from "../apis/videos";
 import history from "../history";
 import {
   SIGN_IN,
@@ -42,26 +42,26 @@ export const signOut = () => {
 
 export const createStream = formValues => async (dispatch, getState) => {
   const { userId } = getState().auth;
-  //  const response = await streams.post("/streams", { ...formValues, userId });
+  //  const response = await videos.post("/videos", { ...formValues, userId });
   const response = await salsa.post("", { ...formValues, userId });
   dispatch({ type: CREATE_STREAM, payload: response.data });
   history.push("/");
 };
 
 export const fetchStreams = () => async dispatch => {
-  //  const response = await streams.get("/streams");
+  //  const response = await videos.get("/videos");
   const response = await salsa.get("");
   dispatch({ type: FETCH_STREAMS, payload: response.data });
 };
 
 export const fetchStream = id => async dispatch => {
-  //  const response = await streams.get(`/streams/${id}`);
+  //  const response = await videos.get(`/videos/${id}`);
   const response = await salsa.get(`/${id}`);
   dispatch({ type: FETCH_STREAM, payload: response.data });
 };
 
 export const editStream = (id, formValues) => async dispatch => {
-  //  const response = await streams.patch(`/streams/${id}`, formValues);
+  //  const response = await videos.patch(`/videos/${id}`, formValues);
   const response = await salsa.put(
     `https://webhooks.mongodb-stitch.com/api/client/v2.0/app/app1-mukhm/service/http/incoming_webhook/salsa-put?id=${id}`,
     formValues
@@ -72,7 +72,7 @@ export const editStream = (id, formValues) => async dispatch => {
 };
 
 export const deleteStream = id => async dispatch => {
-  //  await streams.delete(`/streams/${id}`);
+  //  await videos.delete(`/videos/${id}`);
   //await salsa.delete(`?/id=${id}`);
   await salsa.delete(
     `https://webhooks.mongodb-stitch.com/api/client/v2.0/app/app1-mukhm/service/http/incoming_webhook/salsa-delete?id=${id}`
